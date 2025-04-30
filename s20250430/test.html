@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SWOT 分析</title>
+  <style>
+    h2 {
+      font-size: 50px;
+      color: blue;
+      text-align: center;
+    }
+
+    table {
+      width: 80%;
+      border-collapse: collapse;
+      margin: auto;
+      text-align: center;
+    }
+
+    td {
+      height: 200px;
+    }
+
+    .div01 {
+      height: 200px;
+      color: white;
+      font-size: 30px;
+      text-align: center;
+      display: flex;
+      align-items: center;   /* 垂直置中 */
+      justify-content: center; /* 水平置中 */
+      transition: 0.3s;        /* 動畫效果 */
+    }
+
+    /* 背景顏色設定 */
+    #d1 {
+      background-color: green;
+    }
+
+    #d2 {
+      background-color: orange;
+    }
+
+    #d3 {
+      background-color: blue;
+    }
+
+    #d4 {
+      background-color: red;
+    }
+
+    /* Hover 效果 */
+    .div01:hover {
+      background-color: black;
+      transform: scale(1.05);  /* 略為放大 */
+      box-shadow: 0 0 10px white;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h2>SWOT 分析</h2>
+  <table>
+    <tr>
+      <td>
+        <div id="d1" class="div01">
+          優勢<br>
+          Strengths
+        </div>
+      </td>
+      <td>
+        <div id="d2" class="div01">
+          劣勢<br>
+          Weaknesses
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div id="d3" class="div01">
+          機會<br>
+          Opportunities
+        </div>
+      </td>
+      <td>
+        <div id="d4" class="div01">
+          威脅<br>
+          Threats
+        </div>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

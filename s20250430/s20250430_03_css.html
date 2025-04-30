@@ -11,21 +11,39 @@
         text-align: center;
        } 
 
+       .h4{
+         color:white;
+         font-size: 30px;
+         text-align: center;         
+       }       
+
        table{
         width: 80%;
         border-collapse: collapse;
         margin: auto;
         text-align: center;        
        }
+       p {
+            text-align: left;
+            vertical-align: center;
+            /* background-color: #ccc; */
+            height: 150px;
+        }
       
        /* tr,td{
         border: 1px solid black;        
        } */
+      .div01:hover {
+         background-color: black;
+         transform: scale(1.05);  /* 略為放大 */
+         box-shadow: 0 0 10px white;
+         cursor: pointer;
+      }
 
        td{
+        width: 50%;
         height: 200px;     
         }
-
      
        #d1{
           background-color: green;
@@ -50,9 +68,6 @@
          justify-content:center/* 水平置中*/ ;        
        }       
 
-       .div01:hover{
-            background-color: yellow;
-       }
 
     </style>
 </head>
@@ -62,14 +77,16 @@
         <tr>
             <td>
                 <div id="d1" class="div01">
-                    優勢<br>
-                    Strengths
+                    <h4>優勢(Strengths)</h4>
+                    <p>你擁有的、有利於達成目標的內部資源或能力。<br>
+                        例如：專業技術、豐富經驗、穩定客戶、團隊合作佳、創新能力。</p>
                  </div>
             </td>
             <td>
                 <div id="d2" class="div01">
-                    劣勢<br>
-                    Weaknesses
+                    <h4>劣勢(Weaknesses)</h4>
+                    <p>相對不利的內部因素，會影響你達成目標的能力。<br>
+                        例如：資源不足、人力短缺、技術過時、決策效率低。</p>
                 </div>
 
             </td>
@@ -77,16 +94,18 @@
         <tr>
             <td>
                 <div id="d3" class="div01">
-                    機會<br>
-                    Opportunities
+                    <h4>機會(Opportunities)</h4>
+                    <p>外部環境中對你有利的趨勢或機遇。<br>
+                        例如：產業成長、政府補助、新市場開放、新技術出現。</p>
+                    
                 </div>
             </td>
             <td>
                 <div id="d4" class="div01">
-                    威脅<br>
-                    Threats
+                    <h4>威脅(Threats)</h4>
+                    <p>外部環境中對你不利的因素或風險。<br>
+                        例如：競爭者增加、法規變更、景氣衰退、技術淘汰。</p>
                 </div>
-
             </td>
         </tr>
     </table>
