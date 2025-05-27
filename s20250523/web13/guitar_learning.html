@@ -14,39 +14,36 @@
       font-family: '標楷體';
       font-size: 18px;
       color: #00FFFF;
-      text-align: center;
+      text-align: center;     
     }
-    .nav {
+
+    nav {
       font-family: '標楷體';
-      margin-top:20px;
-      display:flex;
+      margin-top: 20px;
+      display: flex;
       justify-content: space-around;
+      align-items: center;
+    }
+
+    .container {
+      display: flex;            
+      flex-direction: column;
       align-items: center;      
     }
 
-    .container{
-     display:flex; 
-     flex-direction: column;
+    .text-button {    
+      font-size: 16px;      
+      margin-top:20px;
     }
 
-   .text-button {
-      background-color:lightblue;
-      border: 1px solid #ccc;
-      color:black;
-      font-size: 18px;
-      text-align: center;            
-      padding-top:10px;      
-    }
     .text-button:hover {
-      background-color: #e0e0e0;
-    }   
-
-
+      transform: scale(1.05);      
+    }
   </style>
 </head>
 
 <body>
-  <header>
+  <header class="header">
     吉他社教學內容
   </header>
   <!-- nav -->
@@ -60,18 +57,18 @@
     <a href="./guitar_event.html">
       吉他社近期活動公告
     </a>
-  </nav>  
+  </nav>
   <div class="container">
-   <a href="#" class="text-button">基礎樂理</a>
-   <a href="#" class="text-button">常用之吉他技巧</a>
-   <a href="#" class="text-button">音程介紹以及音程表內容</a>
-   <a href="#" class="text-button">節奏型態</a>
-   <a href="#" class="text-button">和絃及級數和絃</a>
-   <a href="#" class="text-button">和絃公式</a>
-   <a href="#" class="text-button">轉位複合</a>
-   <a href="#" class="text-button">調音法</a>
-   <a href="#" class="text-button">吉他的保養</a>
-   <a href="#" class="text-button">如何轉調</a>
+    <a href="#" class="text-button">基礎樂理</a>
+    <a href="#" class="text-button">常用之吉他技巧</a>
+    <a href="#" class="text-button">音程介紹以及音程表內容</a>
+    <a href="#" class="text-button">節奏型態</a>
+    <a href="#" class="text-button">和絃及級數和絃</a>
+    <a href="#" class="text-button">和絃公式</a>
+    <a href="#" class="text-button">轉位複合</a>
+    <a href="#" class="text-button">調音法</a>
+    <a href="#" class="text-button">吉他的保養</a>
+    <a href="#" class="text-button">如何轉調</a>
   </div>
 
 

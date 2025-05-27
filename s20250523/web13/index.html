@@ -6,91 +6,99 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>國立科技高中─校園社團介紹網</title>
     <link rel="stylesheet" href="./css/style.css">
-</head>
-<style>
-    .header-box {
-        text-align: center;
-    }
 
-    a>img {
-        width: 95%;
-    }
+    <style>
+        .header-box {
+            /* display: flex;
+            justify-content: center;
+            align-items: center; */
+            /* background-color: lightblue; */
+            /* height: 100%; */
+            /* padding-top: 20px;
+            text-align: center; */
+            text-align: center;
+        }
 
-    marquee {
-        font-family: '標楷體';
-        font-size: 24px;
-        color: #0000FF;
-    }
+        a>img {
+            width: 95%;
+        }
 
-    .cl-title {
-        margin-top: 10px;
-        color: #FF00FF;
-        font-weight: 500;
-        font-size: 24px;
-        font-family: '標楷體';
-        text-align: center;
+        marquee {
+            font-family: '標楷體';
+            font-size: 24px;
+            color: #0000FF;
+            /* background-color: lightblue;
+            width: 50%;
+            height: 50%; */
+        }
 
-        width: 100px;
-        height: 30px;
-        margin: auto;
-        /* background-color: lightgreen; */
-        /* border-bottom: 3px solid black; */
+        .cl-title {
+            margin-top: 10px;
+            color: #FF00FF;
+            font-weight: 500;
+            font-size: 24px;
+            font-family: '標楷體';
+            text-align: center;
 
-        /* text-decoration: underline; */
-        /* text-decoration: underline;
+            width: 100px;
+            height: 30px;
+            margin: auto;
+            /* background-color: lightgreen; */
+            /* border-bottom: 3px solid black; */
+
+            /* text-decoration: underline; */
+            /* text-decoration: underline;
             text-decoration-color: black;
             text-underline-offset: 10px; */
-    }
+        }
 
+        /* flex container */
+        .cl-content {
+            display: flex;
+            flex-direction: column;
+            /* background-color: lightblue; */
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
 
-    /* flex container */
-    .cl-content {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-    }
+        /* flex item */
+        /* > 下一層 */
+        /* 空白 後代的全部 少用 */
+        .cl-content>div,
+        .item-link {
+            /* color: red; */
+            /* 記得box 沒有垂直置中 只能用padding-top or flex-box推 */
+            padding-top: 5px;
+            width: 200px;
+            height: 35px;
+            /* border-radius: 10px; */
+            /* background-color: lightblue; */
+            background-image: url('./images/menu1.png');
+            margin-top: 10px;
+        }
 
-    /* flex item */
-    /* > 下一層 */
-    /* 空白 少用 */
-    .cl-content>div,
-    .item-link {
-        /* 記得box沒有垂直置只能用padding-top or flex-box推   */
-        padding-top: 5px;
-        width: 200px;
-        height: 35px;
-        /* background-color: lightblue;   */
-        margin: 10px;
-        background-image: url('./images/menu1.png');
-    }
+        .cl-content>div:hover,
+        .item-link:hover {
+            background-image: url('./images/menu2.png');
+        }
 
-    .cl-content>div:hover {
-        background-image: url('./images/menu2.png');
-    }
-
-    .cl-bottom {
-        color: #000000;
-        font-size: 16px;
-        font-family: '標楷體';
-        text-align: center;
-    }
-
-    .footer{
-        color: #000000;
-        font-size: 16px;
-        font-family: '標楷體';
-        text-align: center;
-    }
-</style>
+        .cl-bottom {
+            color: #000000;
+            font-size: 16px;
+            font-family: '標楷體';
+            text-align: center;
+        }
+    </style>
+</head>
 
 <body>
     <!-- header -->
     <header class="header">
         <div class="header-box">
+            <!-- a target go iframe -->
             <a href="./index.html">
-                <img src="./images/logo.png" alt="國立科技高中─校園社團介紹網">
+                <img src="./images/logo.png" alt="國立科技高中校園社團介紹網" srcset="">
             </a>
         </div>
     </header>
@@ -104,10 +112,11 @@
                 <div class="cl-title">
                     社團介紹
                 </div>
+
                 <!-- content -->
                 <div class="cl-content">
                     <a href="./guitar_history.html" class="item-link" target="myIframe">
-                        <div>吉他社</div>
+                        <div class="items">吉他社</div>
                     </a>
                     <div class="items">熱舞社</div>
                     <div class="items">棒球社</div>
@@ -115,6 +124,7 @@
                     <div class="items">足球社</div>
                     <div class="items">童軍社</div>
                 </div>
+
             </div>
             <!-- cl-bottom -->
             <div class="cl-bottom">
@@ -127,13 +137,14 @@
             <!-- cr-top -->
             <div class="cr-top">
                 <marquee behavior="" direction="">
-                    歡迎光臨校園社團介紹網，參觀後請支持社團活動
-                    並熱烈參與
+                    歡迎光臨校園社團介紹網，參觀後請支持社團活
+                    動並熱烈參與
                 </marquee>
             </div>
             <!-- cr-bottom -->
             <!-- main -->
             <div class="cr-bottom">
+                <!-- a tag target go iframe name -->
                 <iframe src="./main.html" frameborder="0" name="myIframe">
 
                 </iframe>
@@ -143,7 +154,7 @@
     </div>
     <!-- footer -->
     <footer class="footer">
-        網頁設計及維護：XX○○○
+        「網頁設計及維護：XX○○○」。（XX：崗位號碼，○○○：應檢人姓名）
     </footer>
 </body>
 
