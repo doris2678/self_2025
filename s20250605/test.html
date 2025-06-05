@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 300px;
+            height: 300px;
+            background-color: lightblue;
+        }
+
+        .container {
+            margin-top: 30px;
+        }
+
+        .bg-pink {
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <button type="button" id="myBtn">myBtn</button>
+    </div>
+    <div class="container">
+        <div class="box" id="myBox"></div>
+    </div>
+
+    <!-- <button id="myButton">點我切換顏色</button>     -->
+
+    <script>
+
+        const colors = ["red", "blue", "green", "orange", "purple"];       
+
+
+        // 1.bind
+        let myBtn = document.getElementById('myBtn');
+        let box = document.querySelector('.box');
+
+
+        myBtn.addEventListener("click", function () {
+            // const button = this;
+
+            colors.forEach((color, index) => {
+                setTimeout(() => {
+                    box.style.backgroundColor = color;
+                }, index * 1000); // 每 1000ms 切換一次
+            });
+        });
+
+    </script>
+</body>
+
+</html>
