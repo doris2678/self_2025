@@ -31,10 +31,12 @@
     <script>
 
         // 1.bind
-        // const box = document.querySelector('.box');
-        const box = $('.box');
-
-        console.log('box', box);
+        const boxJs = document.querySelector('.box');
+        const boxJq = $('.box');          
+         
+        //jquery method 只能用jquery obj
+        console.log('boxJs', boxJs);
+        console.log('boxJq', boxJq);
 
 
         // 2.action
@@ -47,8 +49,6 @@
             // $(this).attr('class', 'box bg-pink');
             box.attr('class', 'box bg-pink');
         });
-
-
 
     </script>
 </body>
