@@ -21,6 +21,10 @@
         img {
             border-radius: 50%;
         }
+
+        .text-red {
+            color: red;
+        }
     </style>
 
 </head>
@@ -127,17 +131,48 @@
 
 
             // 下次會刪除 加總部分 重新講一次
-            function sum() {
-                let changeTotals = $('.totals');
-                console.log('changeTotals', changeTotals);
+            // function sum() {
+            //     let changeTotals = $('.totals');
+            //     console.log('changeTotals', changeTotals);
+            //     let sum = 0;
+            //     $.each(changeTotals, function (key, value) {
+            //         console.log('value', value);
+            //         let tmpTotal = Number($(value).text());
+            //         console.log('tmpTotal', tmpTotal);
+            //         sum += tmpTotal;
+            //     });
+            //     // console.log('sum', sum);
+            //     return sum;
+
+            // }
+
+
+            // function
+            function sumFun() {
+
+                // id -> class
+                // id 單一total
+                // class 全部的total
+                // why 重新抓一次 ??
+                // 養成好習慣 重新抓
+                let tmpTotals = $('.totals');
+                console.log('tmpTotals', tmpTotals);
+                console.log('counts', counts);
+
+
+                // json data / jq objs
                 let sum = 0;
-                $.each(changeTotals, function (key, value) {
+                $.each(tmpTotals, function (key, value) {
+                    console.log('key', key);
                     console.log('value', value);
-                    let tmpTotal = Number($(value).text());
-                    console.log('tmpTotal', tmpTotal);
-                    sum += tmpTotal;
+                    let tmpValue = Number($(value).text());
+                    console.log('tmpValue', tmpValue);
+                    console.log('tmpValue typeof', typeof (tmpValue));
+                    sum += tmpValue;
+                    // sum = sum + tmpValue;
                 });
-                // console.log('sum', sum);
+
+                console.log('sum', sum);
                 return sum;
 
             }
@@ -173,9 +208,40 @@
                 console.log('tmpTotal', tmpTotal);
                 tmpTotal.text(result);
 
-                let sumTotal = sum();
-                console.log('sumTotal', sumTotal);
-                originPrice.text(sumTotal);
+                // 總計顯示
+                let resultSum = Number(sumFun());
+                console.log('resultSum', resultSum);
+
+                let endPrice = 0;
+                if (resultSum >= 500) {
+                    endPrice = resultSum * 0.8;
+                    originPrice.text(endPrice);
+                    originPrice.attr('class', 'text-red');
+
+                } else {
+                    endPrice = resultSum
+                    originPrice.text(endPrice);
+                    originPrice.attr('class', '');
+
+                }
+
+
+                // 1.洗衣服
+                // 2.烘衣服
+                // 3.折衣服
+
+                // 1.洗衣服
+                // let 髒衣服 = 0;
+                // let 洗好的衣服 = 洗衣服(髒衣服);
+
+                // 2.烘衣服
+                // let 烘好的衣服 = 烘衣服(洗好的衣服);
+
+                // 3.折衣服
+                // let 折好的衣服 = 折衣服(烘好的衣服);
+
+
+
 
             });
 

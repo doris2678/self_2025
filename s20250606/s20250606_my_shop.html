@@ -5,181 +5,296 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
     <style>
         body {
-            width: 1024px;
-            margin: auto;
-            font-family: "Segoe UI", sans-serif;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
             background-color: #f9f9f9;
+            padding: 20px;
             color: #333;
         }
 
-        header {
-            text-align: center;
-            font-size: 32px;
-            font-weight: bold;
-            margin: 30px 0;
-            color: #2c3e50;
-        }
-
-        .containter {
-            width: 100%;
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            margin-bottom: 15px;
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
             background-color: #fff;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-            padding: 10px 0;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
 
-        .item {
-            width: 150px;
-            height: auto;
-            padding: 10px;
+        h3 {
             text-align: center;
-            font-size: 16px;
-            border: none;
+            color: #444;
+            margin-bottom: 20px;
         }
 
-        .containter:first-child .item {
-            font-weight: bold;
-            background-color: #ecf0f1;
-            border-radius: 8px 8px 0 0;
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border-radius: 10px;
+            overflow: hidden;
         }
 
-        .qty1,
-        .qty2,
-        .qty3 {
-            width: 80px;
-            height: 35px;
-            padding: 5px;
-            font-size: 16px;
-            text-align: center;
+        th,
+        td {
+            padding: 12px;
             border: 1px solid #ccc;
-            border-radius: 6px;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #e8f4ff;
         }
 
         img {
-            width: 50px;
-            height: 50px;
-            border-radius: 6px;
+            width: 60px;
+            height: 60px;
             object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
         }
 
-        .total {
-            margin-top: 30px;
-            font-size: 24px;
+        input[type="number"] {
+            width: 60px;
+            padding: 5px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            text-align: center;
+            font-size: 16px;
+        }
+
+        .sumprice1 {
+            font-size: 18px;
             font-weight: bold;
+            color: #007bff;
+        }
+
+        td[colspan="6"] {
+            background-color: #f1f1f1;
             text-align: right;
             padding-right: 30px;
-            color: #e74c3c;
         }
 
-        .amt1,
-        .amt2,
-        .amt3 {
+        .sumprice2 {
+            font-size: 18px;
             font-weight: bold;
-            color: #2980b9;
+            color: red;
+        }
+
+        button {
+            /* background: #fbca1f; */
+            font-family: inherit;
+            padding: 0.6em 1.3em;
+            font-weight: 900;
+            font-size: 18px;
+            border: 1px solid black;
+            border-radius: 0.4em;
+            cursor: pointer;
+            margin: auto;
+            text-align:center;
+            padding-top: 20px;
+        }
+
+        button:hover {
+            transform: translate(-0.05em, -0.05em);
+            box-shadow: 0.15em 0.15em;
+        }
+
+        button:active {
+            transform: translate(0.05em, 0.05em);
+            box-shadow: 0.05em 0.05em;
         }
     </style>
+
 </head>
 
 <body>
-    <header>
-        購物車
-    </header>
-    <div class="containter">
-        <div class="item">品項</div>
-        <div class="item">產品名稱</div>
-        <div class="item">產品圖片</div>
-        <div class="item">單價</div>
-        <div class="item">數量</div>
-        <div class="item">金額</div>
-    </div>
-    <div class="containter">
-        <div class="item">1</div>
-        <div class="item">咖啡</div>
-        <div class="item">
-            <img src="./image/coffee.jpg" alt="">
-        </div>
-        <div class="item price1">50</div>
-        <div class="item">
-            <input type="number" class="qty1" min="0">
-        </div>
-        <div class="item">
-            <p class="amt1"></p>
-        </div>
-    </div>
-    <div class="containter">
-        <div class="item">2</div>
-        <div class="item">奶茶</div>
-        <div class="item">
-            <img src="./image/milktea.jpg" alt="">
-        </div>
-        <div class="item price2">30</div>
-        <div class="item">
-            <input type="number" class="qty2" min="0">
-        </div>
-        <div class="item">
-            <p class="amt2"></p>
-        </div>
-    </div>
-    <div class="containter">
-        <div class="item">3</div>
-        <div class="item">紅茶</div>
-        <div class="item">
-            <img src="./image/tea.jpg" alt="">
-        </div>
-        <div class="item price3">20</div>
-        <div class="item">
-            <input type="number" class="qty3" min="0">
-        </div>
-        <div class="item">
-            <p class="amt3"></p>
-        </div>
-    </div>
+    <div class="container">
+        <h3>購物車</h3>
+        <table>
+            <tr>
+                <td width="5%">項目</td>
+                <td width="5%">品名</td>
+                <td width="15%">產品圖</td>
+                <td width="5%">單價</td>
+                <td width="20%">數量</td>
+                <td>金額</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>咖啡</td>
+                <td>
+                    <img src="./image/coffee.jpg" alt="">
+                </td>
+                <td>
+                    <span>
+                        100
+                    </span>
+                </td>
+                <td>
+                    <input class="counts" data-price="100" type="number" name="" id="" value="1" min="0">
+                </td>
+                <td>
+                    <span class="totals">
+                        100
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>奶茶</td>
+                <td>
+                    <img src="./image/milktea.jpg" alt="">
+                </td>
+                <td>
+                    <span>
+                        30
+                    </span>
+                </td>
+                <td>
+                    <input class="counts" data-price="30" id="myCount" type="number" name="" id="" value="1">
+                </td>
+                <td>
+                    <span id="myTotal" class="totals">
+                        30
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>紅茶</td>
+                <td>
+                    <img src="./image/tea.jpg" alt="">
+                </td>
+                <td>
+                    <span>
+                        20
+                    </span>
+                </td>
+                <td>
+                    <input class="counts" data-price="20" type="number" name="" id="" value="1">
+                </td>
+                <td>
+                    <span class="totals">
+                        20
+                    </span>
+                </td>
+            </tr>
 
-    <div class="total">合計：0 元</div>
+            <tr>
+                <td colspan="6">總金額:
+                    <span id="originPrice" calss="sumprice1">150</span>
+                </td>
+            </tr>
 
+            <tr id="discountInfoRow" style="display:none;">
+                <td colspan="6" style="text-align: right; padding-right: 30px;">
+                    <span id="discountText" style="font-size: 16px; color: green;"></span>
+                </td>
+            </tr>
+        </table>
+
+    </div>
+    <div class="container">
+        <button class="btn">送出</button>
+    </div>
 
     <!-- 載入jquery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
         integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script>
 
+    <script>
+        const myCountJs = document.getElementById('myCount');
+        const myTotalJs = document.getElementById('myTotal');
 
         $(document).ready(function () {
-            function calculate() {
-                // 取得數量與單價
-                let qty1 = parseInt($('.qty1').val()) || 0;
-                let price1 = parseInt($('.price1').text()) || 0;
-                let amt1 = qty1 * price1;
-                $('.amt1').text(amt1);
+            //function
+            function sumFun() {
+                let tmpTotals = $('.totals');
+                // console.log('tmpTotals', tmpTotals);
+                // console.log('counts', counts);
 
-                let qty2 = parseInt($('.qty2').val()) || 0;
-                let price2 = parseInt($('.price2').text()) || 0;
-                let amt2 = qty2 * price2;
-                $('.amt2').text(amt2);
+                // json data / jq objs
+                let sum = 0;
+                $.each(tmpTotals, function (key, value) {
+                    // console.log('key', key);
+                    // console.log('value', value);
+                    let tmpValue = Number($(value).text());
+                    // console.log('tmpValue', tmpValue);
+                    // console.log('tmpValue typeof', typeof (tmpValue));
+                    sum += tmpValue;
+                });
 
-                let qty3 = parseInt($('.qty3').val()) || 0;
-                let price3 = parseInt($('.price3').text()) || 0;
-                let amt3 = qty3 * price3;
-                $('.amt3').text(amt3);
-
-                // 合計
-                let total = amt1 + amt2 + amt3;
-                $('.total').text('合計：' + total + ' 元');
+                // console.log('sum', sum);
+                return sum;
             }
 
-            // 綁定事件：當數量輸入改變時計算金額
-            $('.qty1, .qty2, .qty3').on('input', calculate);
+            // 1.bind
+            const counts = $('.counts');
+            const totals = $('.totals');
+            const myCount = $('#myCount');
+            const myTotal = $('#myTotal');
+            const originPrice = $('#originPrice');
+            const btn=$('.btn');
+
+            // 2.action
+
+            counts.change(function () {
+                // console.log('myCount ok');
+                let tmpCount = Number($(this).val());
+                let tmpPrice = Number($(this).attr('data-price'));
+                // console.log('tmpCount', tmpCount);
+                // console.log('tmpPrice', tmpPrice);
+
+                let result = tmpCount * tmpPrice;
+                // console.log('result', result);
+                let tmpTr = $(this).parent().parent();
+                let tmpTotal = tmpTr.find('.totals');
+                // console.log('tmpTr', tmpTr);
+                // console.log('tmpTotal', tmpTotal);
+                tmpTotal.text(result);
+
+                // 總計顯示
+                let resultSum = Number(sumFun());
+                // console.log('resultSum', resultSum);
+
+                let endPrice = 0;
+                let discountText = $('#discountText');
+                let discountInfoRow = $('#discountInfoRow');
+
+                if (resultSum >= 500) {
+                    endPrice = resultSum * 0.8;
+                    originPrice.text(endPrice);
+                    originPrice.attr('class', 'sumprice2');
+                    discountText.text(`原價 ${resultSum} 元，滿 500元 打 8 折，折扣金額為 ${resultSum - endPrice} 元，折扣後為 ${endPrice} 元`);
+                    discountInfoRow.show();
+                } else {
+                    endPrice = resultSum;
+                    originPrice.text(endPrice);
+                    originPrice.attr('class', 'sumprice1');
+                    discountText.text('');
+                    discountInfoRow.hide();
+                }
+
+            });
+
+            btn.click(function(){
+                let resultSum = Number(sumFun());                
+                if  (resultSum<500){
+                    alert(`購物滿500元可打8折,還差${500-resultSum}元哦`);
+                }
+            })
+
+
         });
     </script>
-
-
 </body>
 
 </html>
