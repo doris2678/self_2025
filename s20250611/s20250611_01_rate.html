@@ -22,6 +22,26 @@
         button {
             width: 120px;
         }
+
+        table {
+            margin: auto;
+            margin-top: 10px;
+            width: 80%;
+            background-color: lightgray;
+            border-collapse: collapse;
+        }
+
+        table,
+        tr,
+        th,
+        td {
+            border: 1px solid black;
+        }
+
+        th,
+        td {
+            width: 50%;
+        }
     </style>
 
 </head>
@@ -31,7 +51,7 @@
         <h3>複利計算</h3>
         <hr>
         <p>
-            投入(萬) &nbsp;&nbsp;&nbsp;<input type="text" name="" id="money" value="1">
+            投入(萬) &nbsp;&nbsp;&nbsp;<input type="text" name="" id="money" value="100">
         </p>
         <p>
             投報(%) &nbsp;&nbsp;&nbsp;<input type="text" name="" id="rate" value="8">
@@ -46,7 +66,22 @@
     </div>
 
     <div class="container bg-pink">
-
+        <h3>試算結果</h3>
+        <hr>
+        <table>
+            <tr>
+                <th>年</th>
+                <th>金額</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>10</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>20</td>
+            </tr>
+        </table>
     </div>
 
     <!-- 載入jquery -->
@@ -61,6 +96,17 @@
             const rate = $('#rate');
             const year = $('#year');
             const myBtn = $('#myBtn');
+            let data = [
+                // {
+                //     'year': 1,
+                //     'money': 10,
+                // },
+                // {
+                //     'year': 2,
+                //     'money': 10.8,
+                // },
+            ];
+
 
             // 2.action
 
@@ -73,6 +119,35 @@
                 console.log('rateValue', rateValue);
                 console.log('yearValue', yearValue);
 
+                // 1.年 + 金額 放入 data
+                let sumMoney = 0;
+                for (let tmpYear = 1; tmpYear <= yearValue; tmpYear++) {
+                    console.log('tmpYear', tmpYear);
+                    // 將每一筆的 年 與 金額 放入 data
+                    let tmpObj = {};
+                    if (tmpYear == 1) {
+                        tmpObj = {
+                            'year': tmpYear,
+                            'money': moneyValue
+                        }
+                        sumMoney = moneyValue;
+                    } else {
+
+                        sumMoney = sumMoney * (1 + (rateValue / 100));
+                        tmpObj = {
+                            'year': tmpYear,
+                            'money': sumMoney
+                        }
+                    }
+
+                    data.push(tmpObj)
+
+                }
+                console.log('data', data);
+
+
+                // 2.data to show table
+                // jquery append
 
             });
 
