@@ -125,6 +125,7 @@
           $('table tr:gt(0)').remove();
 
           data.forEach(function(item){
+            console.log('item:',item);
              let row=`<tr>
                       <td>${item.year}</td>
                       <td>${item.money.toFixed(2)}</td>

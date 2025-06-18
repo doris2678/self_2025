@@ -68,22 +68,21 @@
     <div class="container bg-pink">
         <h3>試算結果</h3>
         <hr>
-        <table id="myTable">
+        <table>
             <tr>
                 <th>年</th>
                 <th>金額</th>
             </tr>
-            <!-- <tr>
+            <tr>
                 <td>1</td>
                 <td>10</td>
             </tr>
             <tr>
                 <td>2</td>
                 <td>20</td>
-            </tr> -->
+            </tr>
         </table>
     </div>
-   
 
     <!-- 載入jquery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
@@ -97,25 +96,16 @@
             const rate = $('#rate');
             const year = $('#year');
             const myBtn = $('#myBtn');
-            const myTable =$('#myTable');
-            // let data = [
-                //  {
-                //      'id':1,
-                //      'year': 1,
-                //      'money': '100.00',
-                //  },
-                //  {
-                //      'id':2,
-                //      'year': 2,
-                //      'money': '108.00',
-                //  },
-                //  {
-                //      'id':3,
-                //      'year': 3,
-                //      'money': '116.64',
-                //  },
-
-            // ];
+            let data = [
+                // {
+                //     'year': 1,
+                //     'money': 10,
+                // },
+                // {
+                //     'year': 2,
+                //     'money': 10.8,
+                // },
+            ];
 
 
             // 2.action
@@ -127,76 +117,14 @@
                 let yearValue = Number(year.val());
                 console.log('moneyValue', moneyValue);
                 console.log('rateValue', rateValue);
-                console.log('yearValue', yearValue);  
-                
-                // myTable.text('');
-                let tmpTableHead=`
-                <tr>
-                  <th>年</th>
-                  <th>金額</th>
-                </tr>
-                ` ;
-                myTable.text('');
-                myTable.append(tmpTableHead);
-                
-
-                // set data   
-                // let data=[];
-                // let tmpObj = {
-                //   'id':1,
-                //   'year':1,
-                //   'money':'1000.00'
-                // }
-                // data.push(tmpObj);
-
-                // 1.get data                
-                // 2.data to html table
-
-                // 1.get data          
-                //console.log('data',data);
-                let data = [];
-                
-                //for year 10
-                // for (let i=1; i<=yearValue;i++){
-                //   console.log(`第${i}年`);
-                //   let tmpYear = i;
-                //   let tmpMoney = moneyValue;
-                //   let tmpObj={
-                //       'id':1,
-                //       'year':tmpYear,
-                //       'money':tmpMoney
-                //   }  
-                //    console.log('tmpObj',tmpObj);
-                //    data.push(tmpObj);
-                // }
-                // console.log('data',data);
-
-
-
-
-                // 2.data to html table
-               let tmpText = `
-                 <tr>
-                     <td>1</td>
-                     <td>10</td>
-                 </tr>
-                 <tr>
-                     <td>2</td>
-                     <td>10</td>
-                 </tr>
-                 <tr>
-                     <td>3</td>
-                     <td>10</td>
-                 </tr>
-                `;
-             
+                console.log('yearValue', yearValue);
 
                 // 1.年 + 金額 放入 data
                 let sumMoney = 0;
                 for (let tmpYear = 1; tmpYear <= yearValue; tmpYear++) {
                     console.log('tmpYear', tmpYear);
-                //    將每一筆的 年 與 金額 放入 data
-                    let tmpObj = {};                    
+                    // 將每一筆的 年 與 金額 放入 data
+                    let tmpObj = {};
                     if (tmpYear == 1) {
                         tmpObj = {
                             'year': tmpYear,
@@ -212,7 +140,7 @@
                         }
                     }
 
-                    data.push(tmpObj);
+                    data.push(tmpObj)
 
                 }
                 console.log('data', data);
@@ -220,28 +148,6 @@
 
                 // 2.data to show table
                 // jquery append
-
-                //foreach
-
-                let sum=0;
-                let tmpResult=``;
-            
-
-                $.each(data,function(key,value){
-                    console.log('key',key);
-                    console.log('value',value);
-                    tmpResult += `
-                     <tr>
-                       <td>${value.year}</td>                       
-                       <td>${value.money.toFixed(2)}</td>
-                     </tr>                   
-                    `;
-                });
-
-                console.log('tmpResult',tmpResult);
-                
-                myTable.append(tmpResult);     
-
 
             });
 
