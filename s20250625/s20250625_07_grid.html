@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <!-- 載入bs5 css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.7/css/bootstrap.min.css"
         integrity="sha512-fw7f+TcMjTb7bpbLJZlP8g2Y4XcCyFZW8uy8HsRZsH/SwbMw0plKHFHr99DN3l04VsYNwvzicUX/6qurvIxbxw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -13,6 +14,7 @@
             width: 100%;
             height: 20vh;
             background-color: lightblue;
+            margin-top: 20px;
         }
 
         .box:hover {
@@ -23,7 +25,9 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-sm bg-light">
+
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-sm bg-dark">
         <div class="container-fluid">
             <ul class="navbar-nav">
                 <li class="nav-item">
@@ -40,7 +44,7 @@
     </nav>
 
     <!-- container row col -->
-    <div class="container-fulid text-center mt-3">
+    <div class="container-fluid text-center mt-3 ">
         <div class="row">
             <div class="col">
                 <div class="box">
@@ -50,14 +54,16 @@
         </div>
     </div>
 
+
+    <!-- col < sm < md < lg ..... -->
     <div class="container text-center mt-3">
         <div class="row">
-            <div class="col col-sm-12">
+            <div class="col-12 col-sm-6">
                 <div class="box">
                     2-1
                 </div>
             </div>
-            <div class="col col-sm-12">
+            <div class="col-12 col-sm-6">
                 <div class="box">
                     2-2
                 </div>
@@ -87,22 +93,22 @@
 
     <div class="container text-center mt-3">
         <div class="row">
-            <div class="col-sm-6 col-lg-3">
+            <div class="col-6 col-sm-3">
                 <div class="box">
                     4-1
                 </div>
             </div>
-            <div class="col-sm-6 col-lg-3">
+            <div class="col-6 col-sm-3">
                 <div class="box">
                     4-2
                 </div>
             </div>
-            <div class="col-sm-6 col-lg-3">
+            <div class="col-6 col-sm-3">
                 <div class="box">
                     4-3
                 </div>
             </div>
-            <div class="col-sm-6 col-lg-3">
+            <div class="col-6 col-sm-3">
                 <div class="box">
                     4-4
                 </div>
@@ -117,11 +123,10 @@
 
 
 
-    <!-- 載入bootstrap -->
+    <!-- 載入bs5 js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.7/js/bootstrap.min.js"
         integrity="sha512-zKeerWHHuP3ar7kX2WKBSENzb+GJytFSBL6HrR2nPSR1kOX1qjm+oHooQtbDpDBSITgyl7QXZApvDfDWvKjkUw=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
 
     <!-- 載入jquery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
