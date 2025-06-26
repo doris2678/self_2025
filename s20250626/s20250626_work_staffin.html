@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>人員資料到職表</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.7/css/bootstrap.min.css"
+        integrity="sha512-fw7f+TcMjTb7bpbLJZlP8g2Y4XcCyFZW8uy8HsRZsH/SwbMw0plKHFHr99DN3l04VsYNwvzicUX/6qurvIxbxw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            background-color: #f0f8ff;
+        }
+
+        .form-title {
+            background-color: #0d6efd;
+            color: white;
+            padding: 20px;
+            border-radius: 0.5rem 0.5rem 0 0;
+            text-align: center;
+            font-size: 1.5rem;
+            letter-spacing: 3px;
+        }
+
+        .form-card {
+            background-color: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin-top: 50px;
+        }
+
+        label {
+            font-weight: 500;
+        }
+
+        .btn-primary {
+            font-size: 1.1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="form-card">
+            <div class="form-title">人 員 資 料 到 職 表</div>
+
+            <div class="row mt-4">
+                <div class="col-sm-6 mb-3">
+                    <label for="date1" class="form-label">到職日期</label>
+                    <input type="date" class="form-control" id="date1" name="date1">
+                </div>
+                <div class="col-sm-6 mb-3">
+                    <label for="name" class="form-label">姓名</label>
+                    <input type="text" class="form-control" id="name" name="name">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-6 mb-3">
+                    <label for="birthday" class="form-label">出生日期</label>
+                    <input type="date" class="form-control" id="birthday" name="birthday">
+                </div>
+                <div class="col-sm-6 mb-3">
+                    <label for="idno" class="form-label">身份證號碼</label>
+                    <input type="text" class="form-control" id="idno" name="idno">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-6 mb-3">
+                    <label class="form-label">性別</label><br>
+                    <div class="form-check form-check-inline">
+                        <input type="radio" class="form-check-input" id="boy" name="sex" value="男生" checked>
+                        <label class="form-check-label" for="boy">男生</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input type="radio" class="form-check-input" id="girl" name="sex" value="女生">
+                        <label class="form-check-label" for="girl">女生</label>
+                    </div>
+                </div>
+                <div class="col-sm-6 mb-3">
+                    <label class="form-label">婚姻狀況</label><br>
+                    <div class="form-check form-check-inline">
+                        <input type="radio" class="form-check-input" id="marriage_y" name="marriage" value="已婚">
+                        <label class="form-check-label" for="marriage_y">已婚</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input type="radio" class="form-check-input" id="marriage_n" name="marriage" value="未婚">
+                        <label class="form-check-label" for="marriage_n">未婚</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-6 mb-3">
+                    <label class="form-label">學歷</label>
+                    <div class="form-check">
+                        <input type="radio" class="form-check-input" id="sch1" name="school" value="大學以上">
+                        <label class="form-check-label" for="sch1">大學以上</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="radio" class="form-check-input" id="sch2" name="school" value="大學">
+                        <label class="form-check-label" for="sch2">大學</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="radio" class="form-check-input" id="sch3" name="school" value="高中">
+                        <label class="form-check-label" for="sch3">高中</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="radio" class="form-check-input" id="sch4" name="school" value="其他">
+                        <label class="form-check-label" for="sch4">其他</label>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 mb-3">
+                    <label class="form-label">語言能力</label>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="lang1" name="language[]" value="國語" checked>
+                        <label class="form-check-label" for="lang1">國語</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="lang2" name="language[]" value="台語">
+                        <label class="form-check-label" for="lang2">台語</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="lang3" name="language[]" value="英語">
+                        <label class="form-check-label" for="lang3">英語</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="lang4" name="language[]" value="日語">
+                        <label class="form-check-label" for="lang4">日語</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="lang5" name="language[]" value="其他">
+                        <label class="form-check-label" for="lang5">其他</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="addr1" class="form-label">戶籍住址</label>
+                <input type="text" class="form-control" id="addr1" name="addr1">
+            </div>
+
+            <div class="mb-3">
+                <label for="addr2" class="form-label">通訊住址</label>
+                <input type="text" class="form-control" id="addr2" name="addr2">
+            </div>
+
+            <div class="mb-3">
+                <label for="comment" class="form-label">其他</label>
+                <textarea class="form-control" rows="4" id="comment" name="text"></textarea>
+            </div>
+
+            <div class="mb-3">
+                <button type="button" class="btn btn-primary w-100">送出</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap & jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.7/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</body>
+
+</html>
