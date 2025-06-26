@@ -95,23 +95,13 @@
 
             <div class="row">
                 <div class="col-sm-6 mb-3">
-                    <label class="form-label">學歷</label>
-                    <div class="form-check">
-                        <input type="radio" class="form-check-input" id="sch1" name="school" value="大學以上">
-                        <label class="form-check-label" for="sch1">大學以上</label>
-                    </div>
-                    <div class="form-check">
-                        <input type="radio" class="form-check-input" id="sch2" name="school" value="大學">
-                        <label class="form-check-label" for="sch2">大學</label>
-                    </div>
-                    <div class="form-check">
-                        <input type="radio" class="form-check-input" id="sch3" name="school" value="高中">
-                        <label class="form-check-label" for="sch3">高中</label>
-                    </div>
-                    <div class="form-check">
-                        <input type="radio" class="form-check-input" id="sch4" name="school" value="其他">
-                        <label class="form-check-label" for="sch4">其他</label>
-                    </div>
+                    <label for="school" class="form-label">學歷</label><br>
+                    <select class="form-select" id="school" name="school">
+                        <option>大學以上</option>
+                        <option>大學</option>
+                        <option>高中</option>
+                        <option>其他</option>
+                    </select>
                 </div>
 
                 <div class="col-sm-6 mb-3">
@@ -136,6 +126,7 @@
                         <input type="checkbox" class="form-check-input" id="lang5" name="language[]" value="其他">
                         <label class="form-check-label" for="lang5">其他</label>
                     </div>
+
                 </div>
             </div>
 
@@ -159,6 +150,7 @@
             </div>
         </div>
     </div>
+
 
     <!-- Bootstrap & jQuery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.7/js/bootstrap.bundle.min.js"></script>
