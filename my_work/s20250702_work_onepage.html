@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.7/css/bootstrap.min.css"
+        integrity="sha512-fw7f+TcMjTb7bpbLJZlP8g2Y4XcCyFZW8uy8HsRZsH/SwbMw0plKHFHr99DN3l04VsYNwvzicUX/6qurvIxbxw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+<style>
+    .box1 {
+        width: 100%;
+        /* background-color: lightblue; */
+    }
+
+    .box2 {
+        /* border:1px solid black; */
+        border-radius: 10px;
+        padding: 10px;
+        width: 100%;
+        text-align: center;
+        /* background-color: lightpink; */
+    }
+
+    .box2>img {
+        border-radius: 5px;
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+    }
+
+    .box3 {
+        border-radius: 10px;
+        padding: 10px;
+        width: 100%;
+        text-align: center;
+    }
+
+    .footer {
+        width: 100%;
+        background-color: black;
+        text-align: center;
+    }
+</style>
+
+<body>
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="javascript:void(0)">
+                <img src="" alt="">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mynavbar">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#box1">首頁</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#box2">平板</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#box3">手機</a>
+                    </li>
+                </ul>
+                <form class="d-flex">
+                    <input class="form-control me-2" type="text" placeholder="Search">
+                    <button class="btn btn-primary" type="button">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <!-- navbar end-->
+
+    <!-- carousel  -->
+    <div id="demo" class="carousel slide" data-bs-ride="carousel">
+
+        <!-- Indicators/dots -->
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
+            <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
+            <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
+        </div>
+
+        <!-- The slideshow/carousel -->
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="./images_s20250702/carousel01.jpg" alt="" class="d-block" style="width:100%">
+            </div>
+            <div class="carousel-item">
+                <img src="./images_s20250702/carousel02.jpg" alt="" class="d-block" style="width:100%">
+            </div>
+            <div class="carousel-item">
+                <img src="./images_s20250702/carousel03.jpg" alt="" class="d-block" style="width:100%">
+            </div>
+        </div>
+
+        <!-- Left and right controls/icons -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </button>
+    </div>
+    <!-- carousel  end-->
+
+    <!-- container1  -->
+    <div id="box1"></div>
+    <div class="container mt-3">
+        <div class="row">
+            <div class="col">
+                <div class="box1">
+                    <img class="img-fluid" src="./images_s20250702/img.jpg" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- container1 end -->
+
+    <!-- container2  -->
+    <div id="box2"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-sm-4 mt-3">
+                <div class="box2">
+                    <img class="img-fluid" src="./images_s20250702/img01.jpg" alt="">
+                    <p class="mt-2">Redmi Pad 2 4G</p>
+                    <div class="d-grid mt-3">
+                        <a href="https://www.mi.com/tw/product/redmi-pad-2-4g/" class="btn btn-light btn-block"
+                            target="_blank">暸解更多</a>
+                    </div>
+                    
+
+
+                </div>
+            </div>
+            <div class="col-12 col-sm-4 mt-3">
+                <div class="box2">
+                    <img class="img-fluid" src="./images_s20250702/img02.jpg" alt="">
+                    <p class="mt-2">Redmi Pad SE 8.7</p>
+                    <div class="d-grid mt-3">
+                        <a href="https://www.mi.com/tw/product/redmi-pad-se-8-7-inch/" class="btn btn-light btn-block"
+                            target="_blank">暸解更多</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-4 mt-3">
+                <div class="box2">
+                    <img class="img-fluid" src="./images_s20250702/img03.jpg" alt="">
+                    <p class="mt-2">Redmi Pad Pro</p>
+                    <div class="d-grid mt-3">
+                        <a href="https://www.mi.com/tw/product/redmi-pad-pro/" class="btn btn-light btn-block"
+                            target="_blank">暸解更多</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- container2 end -->
+
+    <!-- container3  -->
+    <div id="box3"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-sm-4 mt-3">
+                <div class="box3">
+                    <img class="img-fluid" src="./images_s20250702/cellphone01.png" alt="">                    
+                    <p class="mt-2">POCO M6</p>
+                    <div class="d-grid mt-3">
+                        <a href="https://www.mi.com/tw/product/poco-m6/" class="btn btn-light btn-block"
+                            target="_blank">暸解更多</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-4 mt-3">
+                <div class="box3">
+                    <img class="img-fluid" src="./images_s20250702/cellphone02.png" alt="">                                     
+                    <p class="mt-2">POCO F7 Ultra</p>
+                    <div class="d-grid mt-3">
+                        <a href="https://www.mi.com/tw/product/poco-f7-ultra/" class="btn btn-light btn-block"
+                            target="_blank">暸解更多</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-4 mt-3">
+                <div class="box3">
+                    <img class="img-fluid" src="./images_s20250702/cellphone03.png" alt="">
+                    <!-- <h3>圖片3</h3> -->
+                    <p class="mt-2">Redmi Note 14 Pro 5G</p>
+                    <div class="d-grid mt-3">
+                        <a href="https://www.mi.com/tw/product/redmi-note-14-pro-5g/" class="btn btn-light btn-block"
+                            target="_blank">暸解更多</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- container3 end -->
+
+    <!-- footer -->
+    <div class="footer">
+        <div style="color:white">Copyright © 2000 - 2025 BigMe. All Rights Reserved 台灣大米有限公司 統編:12345678</div>
+    </div>
+
+
+    <!-- footer end -->
+
+
+    <!-- 載入bootstrap -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.7/js/bootstrap.min.js"
+        integrity="sha512-zKeerWHHuP3ar7kX2WKBSENzb+GJytFSBL6HrR2nPSR1kOX1qjm+oHooQtbDpDBSITgyl7QXZApvDfDWvKjkUw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+    <!-- 載入jquery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script>
+        $(document).ready(function () {
+
+
+        });
+    </script>
+</body>
+
+</html>
