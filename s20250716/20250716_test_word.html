@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 載入bs5 css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.7/css/bootstrap.min.css"
+        integrity="sha512-fw7f+TcMjTb7bpbLJZlP8g2Y4XcCyFZW8uy8HsRZsH/SwbMw0plKHFHr99DN3l04VsYNwvzicUX/6qurvIxbxw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&display=swap">        
+    
+    <style>
+        .totoro-card {
+            background-image: url('./img01.jpeg');           
+            background-size: cover;
+            background-position: center;
+            color: #333;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-overlay {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 1rem;
+            border-radius: 1rem;
+        }
+
+        .totoro-card:hover {
+            transform: scale(1.02);
+            transition: 0.3s ease-in-out;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        } 
+
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="row my-row">
+            
+        </div>
+    </div>
+
+
+    <!-- 載入bs5 js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.7/js/bootstrap.bundle.min.js"
+        integrity="sha512-Tc0i+vRogmX4NN7tuLbQfBxa8JkfUSAxSFVzmU31nVdHyiHElPPy2cWfFacmCJKw0VqovrzKhdd2TSTMdAxp2g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- 載入jquery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script src="./data/data.js"></script>
+    <script>
+        console.log('data', data);
+        $(document).ready(function () {
+
+            // 1.bind
+            const myRow = $('.my-row');
+
+            // 2.action
+
+            console.log('data', data);
+            data.forEach(function (value, key) {
+                console.log('key', key);
+                console.log('value', value);
+              
+                let tmpText = `
+                        <div class="col-12 col-sm-4 mt-3">
+                            <div class="card totoro-card shadow-sm rounded-4 border-0 p-3 text-center">
+                                <div class="card-overlay">
+                                <p class="text-muted small mb-1">ID</p>
+                                <p class="word-id fw-bold">${value.id}</p>
+
+                                <p class="text-muted small mb-1">單字</p>
+                                <p class="word fs-5 text-primary fw-semibold">${value.word}</p>
+
+                                <p class="text-muted small mb-1">音標</p>
+                                <p class="ipa fst-italic text-secondary">${value.ipa}</p>
+
+                                <p class="text-muted small mb-1">中文解釋</p>
+                                <p class="meaning-zh">${value.meaning_zh}</p>
+
+                                <p class="text-muted small mb-1">英文例句</p>
+                                <p class="example-en fst-italic">"${value.example_en}"</p>
+
+                                <p class="text-muted small mb-1">中文例句</p>
+                                <p class="example-zh">${value.example_zh}</p>
+                                </div>
+                            </div>
+                            </div>
+                        `
+
+                myRow.append(tmpText);
+            });
+
+        });
+    </script>
+</body>
+
+</html>
