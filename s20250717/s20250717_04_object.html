@@ -36,36 +36,29 @@
         integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
-        function sum(num1, num2) {
-            let result = num1 + num2;
-            return result;
-        }
+       let myObj={
+           'name':'kai',
+           'mobile':'0919',
+           'myArr':[1,2,3],
+           'myObj':{s1:'amy',s2:'bbb'},
+           'run':()=>{
+                console.log('run this',this);
+                console.log('run ok');
+           },
+           fly:function(){
+                console.log('fly this',this);
+                console.log(`${this.name} fly ok`);
+                let result=`${this.name} fly ok`;
+                return result;               
+           }
+         }
 
-        let sumVar = num1 => (num1 + num2);
-
-        // 1.bind
-        const myBtn = document.getElementById("myBtn");
-        console.log('myBtn', myBtn);
-
-        // 2.action
-
-        // 一般function , this 代表點選的物件
-        // myBtn.addEventListener('click', function () {
-        //     console.log('click ok');
-
-
-        // });
-
-        // 箭頭function , this 代表window
-        // 如果要用的話
-        // 1.用原本一般function
-        // 2.myBtn外部綁訂好了
-        myBtn.addEventListener('click', () => {
-            console.log('click ok');
-            console.log('this', this);
-            console.log('myBtn', myBtn);
-
-        });
+         console.log('myObj',myObj);
+         myObj.run();
+         myObj.fly();       
+           
+         let getResult=myObj.fly();
+         console.log('getResult',getResult);
 
 
     </script>
