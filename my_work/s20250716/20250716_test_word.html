@@ -9,11 +9,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.7/css/bootstrap.min.css"
         integrity="sha512-fw7f+TcMjTb7bpbLJZlP8g2Y4XcCyFZW8uy8HsRZsH/SwbMw0plKHFHr99DN3l04VsYNwvzicUX/6qurvIxbxw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&display=swap">        
-    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&display=swap">
+
     <style>
         .totoro-card {
-            background-image: url('./img01.jpeg');           
+            background-image: url('./img01.jpeg');
             background-size: cover;
             background-position: center;
             color: #333;
@@ -31,8 +31,7 @@
             transform: scale(1.02);
             transition: 0.3s ease-in-out;
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
-        } 
-
+        }
     </style>
 </head>
 
@@ -40,7 +39,7 @@
 
     <div class="container">
         <div class="row my-row">
-            
+
         </div>
     </div>
 
@@ -69,11 +68,12 @@
             data.forEach(function (value, key) {
                 console.log('key', key);
                 console.log('value', value);
-              
+
                 let tmpText = `
-                        <div class="col-12 col-sm-4 mt-3">
-                            <div class="card totoro-card shadow-sm rounded-4 border-0 p-3 text-center">
-                                <div class="card-overlay">
+                        <div class="col-12 col-sm-4 mt-3">                              
+                            <div class="card totoro-card shadow-sm rounded-4 border-0 p-3 text-center h-100 d-flex flex-column">
+                                <div class="card-overlay mt-auto">
+                                    
                                 <p class="text-muted small mb-1">ID</p>
                                 <p class="word-id fw-bold">${value.id}</p>
 
@@ -91,6 +91,8 @@
 
                                 <p class="text-muted small mb-1">中文例句</p>
                                 <p class="example-zh">${value.example_zh}</p>
+
+                                <button class="btn btn-sm btn-outline-primary speak-btn mt-2" data-word="${value.word}">🔊 發音</button>
                                 </div>
                             </div>
                             </div>
@@ -101,6 +103,17 @@
 
         });
     </script>
+    <script>
+        $(document).on('click', '.speak-btn', function () {
+            const word = $(this).data('word');
+            const utterance = new SpeechSynthesisUtterance(word);
+            utterance.lang = 'en-US';  // 可改成 'en-GB' 英式發音
+            utterance.rate = 0.9;
+            utterance.pitch = 1;
+            speechSynthesis.speak(utterance);
+        });
+    </script>
+
 </body>
 
 </html>
