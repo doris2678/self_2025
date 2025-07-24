@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html>30
 <html lang="en">
 
 <head>
@@ -58,7 +58,7 @@
     <div class="d-flex justify-content-between align-items-center mb-4">
       <div>
         <h5>倒數計時</h5>
-        <div id="time" class="display-2 text-info score-time">10</div>
+        <div id="time" class="display-2 text-info score-time">60</div>
       </div>
       <div class="text-center flex-grow-1">
         <h2>🏀 投籃大賽 🏀</h2>
@@ -128,8 +128,8 @@
 
 
     let score = 0;
-    let startTime = 10;
-    const bonusTime = 5;
+    let startTime = 60;
+    const bonusTime = 30;
     let maxScore = 0;
 
     let myInterval = null;
@@ -152,11 +152,11 @@
       //       `<li class="list-group-item list-group-item-primary fw-bold">${s} 分</li>`
       //   )
       //   .join("");
-      let tmp = '';
+       let tmp = '';
       ranking.forEach((s) => {
         tmp += `<li class="list-group-item list-group-item-primary fw-bold">${s} 分</li>`;
       });
-      rankList.innerHTML = tmp;      
+      rankList.innerHTML = tmp;     
     }
 
     // 更新排行榜
@@ -216,7 +216,7 @@
       shotBtn.disabled = false;
       score = 0;
       scoreSpan.innerHTML = score;
-      startTime = 10;
+      startTime = 60;
       timeSpan.innerHTML = startTime;
       timeSpan.className = "text-info display-2 score-time";
 
@@ -232,8 +232,7 @@
 
         if (startTime <= 0) {
           clearInterval(myInterval);
-          shotBtn.disabled = true;
-          alert("時間到！");
+          shotBtn.disabled = true;          
           updateRanking(score);
           if (score > maxScore) {
             maxScore = score;
@@ -269,7 +268,7 @@
       updateRanking(score);
       score = 0;
       scoreSpan.innerHTML = score;
-      startTime = 10;
+      startTime = 60;
       timeSpan.innerHTML = startTime;
       timeSpan.className = "text-info display-2 score-time";
 
