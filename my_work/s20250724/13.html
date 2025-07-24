@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>投籃大賽</title>
+  <!-- 載入bs5 css -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.7/css/bootstrap.min.css"
+    integrity="sha512-fw7f+TcMjTb7bpbLJZlP8g2Y4XcCyFZW8uy8HsRZsH/SwbMw0plKHFHr99DN3l04VsYNwvzicUX/6qurvIxbxw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <style>
+    body {
+      background: #f0f2f5;
+    }
+
+    #ball {
+      position: fixed;
+      width: 50px;
+      height: 50px;
+      pointer-events: none;
+      display: none;
+      z-index: 1050;
+      user-select: none;
+    }
+
+    #ranking {
+      max-width: 400px;
+      margin: 40px auto;
+    }
+
+    #ranking h4 {
+      margin-bottom: 20px;
+    }
+
+    .score-time {
+      font-weight: 700;
+    }
+
+    .btn-lg {
+      min-width: 120px;
+    }
+
+    .main-card {
+      max-width: 700px;
+      margin: 40px auto 0;
+      padding: 20px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgb(0 0 0 / 0.1);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="main-card shadow-sm">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <div>
+        <h5>倒數計時</h5>
+        <div id="time" class="display-2 text-info score-time">10</div>
+      </div>
+      <div class="text-center flex-grow-1">
+        <h2>🏀 投籃大賽 🏀</h2>
+      </div>
+      <div class="text-end">
+        <h5>最高分數</h5>
+        <div id="maxScore" class="display-4 text-primary score-time">0</div>
+      </div>
+    </div>
+
+    <div class="row align-items-center mb-4">
+      <div class="col-3 text-center">
+        <img id="img-left" src="./images/left.jpg" class="img-fluid rounded" alt="左側圖" />
+      </div>
+      <div class="col-6 text-center">
+        <h5>目前分數</h5>
+        <div id="score" class="display-3 text-success score-time">0</div>
+      </div>
+      <div class="col-3 text-center">
+        <img id="img-right" src="./images/right.jpg" class="img-fluid rounded" alt="右側圖" />
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-center gap-3 mb-3">
+      <button id="startBtn" type="button" class="btn btn-primary btn-lg">
+        開始
+      </button>
+      <button id="shotBtn" type="button" class="btn btn-success btn-lg d-none" disabled>
+        投籃
+      </button>
+      <button id="stopBtn" type="button" class="btn btn-danger btn-lg">
+        停止
+      </button>
+    </div>
+  </div>
+
+  <img id="ball" src="./images/Basketball.png" alt="basketball" />     
+
+  <div id="ranking" class="text-center">
+    <h4>排行榜 (最高5名)</h4>
+    <ul id="rankList" class="list-group"></ul>
+  </div>
+
+  <!-- 載入bs5 js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.7/js/bootstrap.min.js"
+    integrity="sha512-zKeerWHHuP3ar7kX2WKBSENzb+GJytFSBL6HrR2nPSR1kOX1qjm+oHooQtbDpDBSITgyl7QXZApvDfDWvKjkUw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+  <!-- 載入jquery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+    integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+  <script>
+    const startBtn = document.getElementById("startBtn");
+    const shotBtn = document.getElementById("shotBtn");
+    const stopBtn = document.getElementById("stopBtn");
+    const scoreSpan = document.getElementById("score");
+    const timeSpan = document.getElementById("time");
+    const maxScoreSpan = document.getElementById("maxScore");
+    const rankList = document.getElementById("rankList");
+    const ball = document.getElementById("ball");
+    const imgleft=document.getElementById("img-left");
+    const imgright=document.getElementById("img-right");
+
+
+    let score = 0;
+    let startTime = 10;
+    const bonusTime = 5;
+    let maxScore = 0;
+
+    let myInterval = null;
+
+    let getMaxScore = Number(localStorage.getItem("maxScore"));
+    if (getMaxScore) maxScore = getMaxScore;
+
+    maxScoreSpan.innerHTML = maxScore;
+    timeSpan.innerHTML = startTime;
+    scoreSpan.innerHTML = score;
+
+    shotBtn.disabled = true;
+
+    // 讀取排行榜
+    function loadRanking() {
+      let ranking = JSON.parse(localStorage.getItem("ranking")) || [];
+      // rankList.innerHTML = ranking
+      //   .map(
+      //     (s) =>
+      //       `<li class="list-group-item list-group-item-primary fw-bold">${s} 分</li>`
+      //   )
+      //   .join("");
+      let tmp = '';
+      ranking.forEach((s) => {
+        tmp += `<li class="list-group-item list-group-item-primary fw-bold">${s} 分</li>`;
+      });
+      rankList.innerHTML = tmp;      
+    }
+
+    // 更新排行榜
+    function updateRanking(newScore) {
+      if (newScore <= 0) return;
+      let ranking = JSON.parse(localStorage.getItem("ranking")) || [];
+      ranking.push(newScore);
+      ranking.sort((a, b) => b - a);
+      ranking = ranking.slice(0, 5);
+      localStorage.setItem("ranking", JSON.stringify(ranking));
+      loadRanking();
+    }
+
+    loadRanking();
+
+    function showStartBtn() {
+      startBtn.classList.remove("d-none");
+      shotBtn.classList.add("d-none");
+    }
+
+    function showShotBtn() {
+      startBtn.classList.add("d-none");
+      shotBtn.classList.remove("d-none");
+    }
+
+    // 投籃動畫
+    function shootAnimation() {
+      //const btnRect = shotBtn.getBoundingClientRect();
+      const btnRect = imgright.getBoundingClientRect();
+
+      ball.style.left = btnRect.left + btnRect.width / 2 - 25 + "px";
+      ball.style.top = btnRect.top + btnRect.height / 2 - 25 + "px";
+      ball.style.display = "block";
+      ball.style.transition = "transform 0.6s ease-in-out";
+
+      //const targetX = window.innerWidth / 2 - 25;
+      //const targetY = window.innerHeight / 3;
+       const targetX =window.innerWidth / 3 - 25;
+       const targetY =window.innerHeight / 3;
+
+      const deltaX = targetX - (btnRect.left + btnRect.width / 2 - 25);
+      const deltaY = targetY - (btnRect.top + btnRect.height / 2 - 25);
+
+      requestAnimationFrame(() => {
+        ball.style.transform = `translate(${deltaX}px, ${deltaY}px) scale(0.5)`;
+      });
+
+      setTimeout(() => {
+        ball.style.display = "none";
+        ball.style.transition = "none";
+        ball.style.transform = "none";
+      }, 600);
+    }
+
+    startBtn.addEventListener("click", () => {
+      showShotBtn();
+      shotBtn.disabled = false;
+      score = 0;
+      scoreSpan.innerHTML = score;
+      startTime = 10;
+      timeSpan.innerHTML = startTime;
+      timeSpan.className = "text-info display-2 score-time";
+
+      myInterval = setInterval(() => {
+        startTime--;
+        timeSpan.innerHTML = startTime;
+
+        if (startTime < bonusTime) {
+          timeSpan.className = "text-danger display-2 score-time";
+        } else {
+          timeSpan.className = "text-info display-2 score-time";
+        }
+
+        if (startTime <= 0) {
+          clearInterval(myInterval);
+          shotBtn.disabled = true;
+          alert("時間到！");
+          updateRanking(score);
+          if (score > maxScore) {
+            maxScore = score;
+            localStorage.setItem("maxScore", maxScore);
+            maxScoreSpan.innerHTML = maxScore;
+            alert("破紀錄了！");
+          }
+          showStartBtn();
+        }
+      }, 1000);
+    });
+
+    shotBtn.addEventListener("click", () => {
+      if (startTime < 1) return;
+      shootAnimation();
+
+      if (startTime > bonusTime) {
+        score += 2;
+      } else {
+        score += 3;
+      }
+      scoreSpan.innerHTML = score;
+
+      if (score > maxScore) {
+        maxScore = score;
+        localStorage.setItem("maxScore", maxScore);
+        maxScoreSpan.innerHTML = maxScore;
+      }
+    });
+
+    stopBtn.addEventListener("click", () => {
+      clearInterval(myInterval);
+      updateRanking(score);
+      score = 0;
+      scoreSpan.innerHTML = score;
+      startTime = 10;
+      timeSpan.innerHTML = startTime;
+      timeSpan.className = "text-info display-2 score-time";
+
+      shotBtn.disabled = true;
+      showStartBtn();
+    });
+  </script>
+</body>
+
+</html>
