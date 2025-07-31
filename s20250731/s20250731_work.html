@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 載入bs5 css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.7/css/bootstrap.min.css"
+        integrity="sha512-fw7f+TcMjTb7bpbLJZlP8g2Y4XcCyFZW8uy8HsRZsH/SwbMw0plKHFHr99DN3l04VsYNwvzicUX/6qurvIxbxw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 mydiv">
+                <img class="img-fluid" src="./image/img1.jpg" width="300" height="300">
+                <div class="mt-3 clprice" data-price="9,000">原價:10,000</div>
+            </div>
+            <div class="col-md-4 mydiv">
+                <img class="img-fluid" src="./image/img2.jpg" width="300" height="300">
+                <div class="mt-3 clprice" data-price="17,000">原價:20,000</div>
+            </div>
+            <div class="col-md-4 mydiv">
+                <img class="img-fluid" src="./image/img3.jpg" width="300" height="300">                
+                <div class="mt-3 clprice" id="price3"data-price="22,000">原價:30,000</div>
+            </div>
+        </div>
+
+
+        <!-- 載入bs5 js -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.7/js/bootstrap.bundle.min.js"
+            integrity="sha512-Tc0i+vRogmX4NN7tuLbQfBxa8JkfUSAxSFVzmU31nVdHyiHElPPy2cWfFacmCJKw0VqovrzKhdd2TSTMdAxp2g=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+        <!-- 載入jquery -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+            integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script>
+            $(document).ready(function () {
+                // 1.bind
+                const clprice = $(".clprice");
+                const mydiv=$(".mydiv");
+
+                // 2.action
+                
+                clprice.click(function (e) {                   
+                   let thisNext=$(this).next();
+                   if(thisNext.length > 0){
+                      return false;
+                   }                    
+
+                   $(this).css('text-decoration', 'line-through'); // 加刪除線                    
+                   let tmp_price=$(this).attr('data-price');
+                   tmp=`
+                   <div>驚喜優惠價：${tmp_price}</div>
+                   `;    
+                   $(this).parent().append(tmp);                                  
+                 });
+
+            });
+        </script>
+</body>
+
+</html>

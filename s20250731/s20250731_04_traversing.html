@@ -16,12 +16,16 @@
 
 <body>
     <h1>Welcome to My Homepage</h1>
-
-    <p>My name is Donald (index 0).</p>
-    <p>Donald Duck (index 1).</p>
-    <p class="greenP">I live in Duckburg (index 2).</p>
-    <p>My best friend is Mickey (index 3).</p>
-
+    <div>
+        <ul>
+            <li>
+                <p>My name is Donald (index 0).</p>
+            </li>
+            <li>
+                <p>Donald Duck (index 1).</p>
+            </li>
+        </ul>
+    </div>
 
 
     <!-- 載入bs5 js -->
@@ -36,27 +40,27 @@
     <script>
         $(document).ready(function () {
             // 1.bind
-            const myP=$("p");
-            console.log('myP',myP);            
+            const myP = $("p");
+            console.log('myP', myP);
 
-            const myPFirst=$("p").first();
-            console.log('myPFirst',myPFirst);                        
+            const myPFirst = $("p").first();
+            console.log('myPFirst', myPFirst);
 
-            const myPLast=$("p").last();
-            console.log('myPLast',myPLast);
+            const myPFirstParent=myPFirst.parent();
+            console.log('myPFirstParent',myPFirstParent);
 
-            const myEq2=myP.eq(2);
-            console.log('myEq2',myEq2);
+            const myPFirstParentParent=myPFirst.parent().parent();
+            console.log('myPFirstParentParent',myPFirstParentParent);
 
-            const greenP=$(".greenP");
-            console.log('greenP',greenP);
+            const myPFirstClosestUl=myPFirst.closest('ul');
+            console.log('myPFirstClosestUl',myPFirstClosestUl);
 
             // 2.action
-             myPFirst.attr('class','text-primary');
-             myPLast.attr('class','text-danger');
-             greenP.attr('class','text-success');
-              
-            
+            myPFirst.attr('class', 'text-primary');
+            myPLast.attr('class', 'text-danger');
+            greenP.attr('class', 'text-success');
+
+
         });
     </script>
 </body>
