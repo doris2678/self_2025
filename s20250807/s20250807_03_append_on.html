@@ -55,8 +55,11 @@
             let appendCount = 0;
             // https://www.w3schools.com/Jquery/event_on.asp
             // https://chatgpt.com/share/68943839-ff38-800a-9404-184ea2448220
+            // https://chatgpt.com/share/68943da7-b264-800a-a8b0-82cdf88000bb
             // jq click() 無法event copy
-            // jq on() 可以event copy            
+            // jq on() 可以event copy
+            //若使用 .append() 動態新增內容，並希望新元素也有事件處理器，請一律使用：
+            //$(父元素).on('事件', '子選擇器', 處理函式)
             $('.container').on('click','.mySpan',function(){
                 
                 appendCount++;                
