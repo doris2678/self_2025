@@ -94,7 +94,7 @@
 
           cloneBtn.click(function(e){
            
-          let tmpTr=$(this).closest('tr');
+          let tmpTr=$(this).closest('tr');          
           tmpTr.clone(true).appendTo(myTable);
           myTable.find('tr').last().find('.my-mobile').val('');
 
