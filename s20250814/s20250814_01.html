@@ -15,7 +15,6 @@
 </head>
 
 <body>
-<!-- 氣象局API授權碼CWA-AD826E53-3058-4966-8008-BA958FD3867A -->
 
  <table id="table_id" class="display">
     <thead>
@@ -39,8 +38,8 @@
         integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
-        $(document).ready(function () {
-        let url="https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=CWA-AD826E53-3058-4966-8008-BA958FD3867A";
+        $(document).ready(function () {        
+        let url="https://opendata.cwa.gov.tw/api/";
         $.ajax({
            type:"get",
            url:url,
