@@ -49,6 +49,8 @@
               let content='';
               console.log(response);
               $.each(data,function(key,value){
+                console.log('key',key);
+                console.log('value',value.locationName);
                 // content+=`
                 //   <tr>
                 //     <td>${key.id}</td>  
