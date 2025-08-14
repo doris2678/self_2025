@@ -15,17 +15,24 @@
 </head>
 
 <body>
+    <div class="container mt-5">
+        <h2 class="text-center">氣象預報 36 小時資料</h2>
+        <table class="table table-bordered">
+            <thead class="text-center">
+                <tr>
+                    <th>id</th>
+                    <th>城市</th>
+                    <th><span id="startTime12Span">0-12</span></th>
+                    <th><span id="startTime24Span">12-24</span></th>
+                    <th><span id="startTime36Span">24-36</span></th>
+                </tr>
+            </thead>
+            <tbody id="myTbody">
 
- <table id="table_id" class="display">
-    <thead>
-        <tr>
-            <th>Column 1</th>
-            <th>Column 2</th>
-        </tr>
-    </thead>
-    <tbody id="myTbody">
-    </tbody>
-</table>
+            </tbody>
+        </table>
+
+    </div>
 
 
     <!-- 載入bs5 js -->
@@ -37,42 +44,147 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
         integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- 載入pwd -->
+    <!-- .gitignore -->
+    <!-- /pw -->
+    <!-- /pw/pw.js -->
+    <!-- let pw = 'your password' -->
+    <script src="../pw/pw.js"></script>
     <script>
-        $(document).ready(function () {        
-        let url="https://opendata.cwa.gov.tw/api/";
-        $.ajax({
-           type:"get",
-           url:url,
-           dataType:"JSON",
-           success:function(response){
-              let data=response.records.location;
-              let content='';
-              console.log(response);
-              $.each(data,function(key,value){
-                console.log('key',key);
-                console.log('value',value.locationName);
-                // content+=`
-                //   <tr>
-                //     <td>${key.id}</td>  
-                //     <td>${value.records.location.locationName}</td>  
-                //   </tr>
-                // `
-                // myTbody.append(content);
-                // $('#table_id').DataTable();
+        $(document).ready(function () {
+            //1.bind            
+            let pwd = pw;
+            let startTime12Span=$('#startTime12Span');
+            let startTime24Span=$('#startTime24Span');
+            let startTime36Span=$('#startTime36Span');
 
-              })
+            console.log('pwd', pwd);
+            const myTbody = $('#myTbody');
+
+            //2.action init
+            let url = `https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=${pwd}`;
+
+            $.ajax({
+                type: "get",
+                url: url,
+                dataType: "JSON",
+                success: function (response) {
+                    let data = response.records.location;
+                    //console.log(data);
+
+                    let tmpText = ``;
+                    $.each(data, function (key, value) {
+                        //  console.log('key', key);
+                        //  console.log('value', value.locationName);
+
+                        //wx startTime    
+                        let startTime12  = data[0].weatherElement[0].time[0].startTime;
+                        let startTime24  = data[0].weatherElement[0].time[1].startTime;
+                        let startTime36  = data[0].weatherElement[0].time[2].startTime;
+
+                        //change time word
+                        startTime12Span.text(startTime12);
+                        startTime24Span.text(startTime24);
+                        startTime36Span.text(startTime36);
+
+                        let date12=new Date(startTime12);
+                        let getDayDate12=date12.getHours();
+                        console.log('date12',date12);
+                        console.log('getDayDate12',getDayDate12);
+
+                        let date24=new Date(startTime24);
+                        let getDayDate24=date24.getHours();
+                        console.log('date24',date24);
+                        console.log('getDayDate24',getDayDate24);
+
+                        let date36=new Date(startTime36);
+                        let getDayDate36=date12.getHours();
+                        console.log('date36',date36);
+                        console.log('getDayDate36',getDayDate36);
+
+                        let day12String='day';
+                        let day24String='day';
+                        let day36String='day';
+
+                        // getDayDate12
+                        switch (getDayDate12) {
+                            case 6:
+                                day12String='day';
+                                break;                        
+                            case 12:
+                                day12String='day';
+                                break;                        
+                            case 18:
+                                day12String='night';
+                                break;                       
+                        } 
+                        // getDayDate24
+                        switch (getDayDate24) {
+                            case 6:
+                                day24String='day';
+                                break;                        
+                            case 12:
+                                day24String='day';
+                                break;                        
+                            case 18:
+                                day24String='night';
+                                break;                       
+                        } 
+                        // getDayDate36
+                        switch (getDayDate36) {
+                            case 6:
+                                day36String='day';
+                                break;                        
+                            case 12:
+                                day36String='day';
+                                break;                        
+                            case 18:
+                                day36String='night';
+                                break;                       
+                        } 
 
 
-           }
-
-        }
 
 
-        )
+                        //wx
+                        let wx12 = value.weatherElement[0].time[0].parameter.parameterName;
+                        let wx24 = value.weatherElement[0].time[1].parameter.parameterName;
+                        let wx36 = value.weatherElement[0].time[2].parameter.parameterName;
 
+                        //WxValue
+                        let WxValue12 = value.weatherElement[0].time[0].parameter.parameterValue;
+                        let WxValue24 = value.weatherElement[0].time[1].parameter.parameterValue;
+                        let WxValue36 = value.weatherElement[0].time[2].parameter.parameterValue;
+
+                        // minT 
+                        let min12 = value.weatherElement[2].time[0].parameter.parameterName;
+                        let min24 = value.weatherElement[2].time[1].parameter.parameterName;
+                        let min36 = value.weatherElement[2].time[2].parameter.parameterName;
+                        // maxT
+                        let max12 = value.weatherElement[4].time[0].parameter.parameterName;
+                        let max24 = value.weatherElement[4].time[1].parameter.parameterName;
+                        let max36 = value.weatherElement[4].time[2].parameter.parameterName;
+
+
+                        tmpText += `
+                          <tr>
+                              <td>${key + 1}</td>  
+                              <td>${value.locationName}</td>  
+                              <td>${min12}-${max12} &deg;C ${wx12} <img src="./${day12String}/${WxValue12}.svg"></td>  
+                              <td>${min24}-${max24} &deg;C ${wx24} <img src="./${day24String}/${WxValue24}.svg"></td>  
+                              <td>${min36}-${max36} &deg;C ${wx36} <img src="./${day36String}/${WxValue36}.svg"></td>  
+                          </tr>
+                        `;
+                    })
+                    myTbody.append(tmpText);
+                }
+            }
+            )
 
         });
     </script>
+    
 </body>
 
 </html>
