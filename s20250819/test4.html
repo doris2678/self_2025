@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 載入bs5 css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.7/css/bootstrap.min.css"
+        integrity="sha512-fw7f+TcMjTb7bpbLJZlP8g2Y4XcCyFZW8uy8HsRZsH/SwbMw0plKHFHr99DN3l04VsYNwvzicUX/6qurvIxbxw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+    </style>
+
+</head>
+
+<body>
+  <div class="container mt-5">
+    <form id="myForm" action="/action_page.php">
+      <div class="row">
+        <div class="col">
+            <div class="form-check form-check-inline">               
+               <input type="checkbox" class="form-check-input" name="my-check[]" value="三鶯運動公園"> 
+               <label class="form-check-label">三鶯運動公園</label>
+            </div>
+            <div class="form-check form-check-inline">               
+               <input type="checkbox" class="form-check-input" name="my-check[]" value="大佳河濱公園"> 
+               <label class="form-check-label">大佳河濱公園</label>
+            </div>
+            <div class="form-check form-check-inline">               
+               <input type="checkbox" class="form-check-input" name="my-check[]" value="八里左岸公園"> 
+               <label class="form-check-label">八里左岸公園</label>
+            </div>
+            <div class="form-check form-check-inline">               
+               <input type="checkbox" class="form-check-input" name="my-check[]" value="關渡自然公園"> 
+               <label class="form-check-label">關渡自然公園</label>
+            </div>
+            <div class="form-check form-check-inline">               
+               <input type="checkbox" class="form-check-input" name="my-check[]" value="淡水河畔公園"> 
+               <label class="form-check-label">淡水河畔公園</label>
+            </div>
+        </div>
+        <div class="row">
+            <button type="submit" class="btn btn-primary mt-2">Submit</button>
+        </div>       
+      </div>
+    </form>
+  </div>
+
+  <hr>
+
+  <hr>
+
+    <div class="container mt-5">
+        <h2 class="text-center">河濱公園位置</h2>
+        <table class="table table-bordered">
+            <thead class="text-center">
+                <tr>
+                    <th>id</th>
+                    <th>名稱</th>
+                    <th>經度</th>
+                    <th>緯度</th>
+                </tr>
+            </thead>
+            <tbody id="myTbody">
+
+            </tbody>
+        </table>
+    </div>
+
+
+    <!-- 載入bs5 js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.7/js/bootstrap.bundle.min.js"
+        integrity="sha512-Tc0i+vRogmX4NN7tuLbQfBxa8JkfUSAxSFVzmU31nVdHyiHElPPy2cWfFacmCJKw0VqovrzKhdd2TSTMdAxp2g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- 載入jquery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script src="./data/tmp4.js"></script>
+    <script>
+         $(document).ready(function () {
+             //1.bind        
+            const data=testData;
+            console.log(data);
+            const myTbody = $('#myTbody'); 
+            const myForm = $('#myForm');
+            // console.log('data',data);
+            
+            let tmp=``;                                   
+            $.each(data,function(key,value){
+            tmp += `<tr>
+                <td>${key+1}</td>
+                <td>${value.name}</td>
+                <td>${value.longitude}</td>
+                <td>${value.latitude}</td>
+            </tr>`;                        
+        });        
+
+            myTbody.append(tmp);
+        
+
+         //form submit
+         myForm.submit(function(e){
+            e.preventDefault();
+            //get formdata
+            let formData=myForm.serializeArray();
+            let nameArr=[];// 我勾選的資料
+            tmp='';
+            myTbody.html('');
+            $.each(formData,function(key,value){
+               console.log('value',value);
+               //array push
+               nameArr.push(value.value);
+            });
+            console.log('formData',formData);
+            consloe.log('nameArr',nameArr);
+            
+            //show data                       
+            $.each(data,function(key,value){
+              let tmpname=value.name;
+              let index=nameArr.indexOf(tmpname);
+              console.log('tmpname',tmpname);
+              console.log('index',index);
+              if(index !== -1){              
+                tmp += `<tr>
+                  <td>${key+1}</td>
+                  <td>${value.name}</td>
+                  <td>${value.longitude}</td>
+                  <td>${value.latitude}</td>
+                </tr>`;                        
+              }            
+
+             });        
+              myTbody.append(tmp);
+
+         });   
+         
+          });
+    </script>   
+  
+
+</body>
+
+</html>
