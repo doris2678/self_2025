@@ -104,7 +104,7 @@ rps32(移轉編號) -->
     <div class="container">
         <div class="row">
             <div class="col">
-                <label for="sel1" class="form-label">請選擇區域:</label>                
+                <label for="sel1" class="form-label">請選擇區域:</label>
                 <select id="mySelect" class="form-select" id="sel1" name="sellist1"></select>
             </div>
         </div>
@@ -119,7 +119,7 @@ rps32(移轉編號) -->
                 <tr>
                     <th>id</th>
                     <th>鄉鎮市區</th>
-                    <th>交易標的</th>                    
+                    <th>交易標的</th>
                     <th>土地區段位置建物區段門牌</th>
                     <th>總價元</th>
                 </tr>
@@ -144,25 +144,8 @@ rps32(移轉編號) -->
     <script src="./data/tmp2.js"></script>
     <script>
         $(document).ready(function () {
-            //1.bind        
-            const data = testData;
-            const myTbody = $('#myTbody');
-            const myForm = $('#myForm');
-            const myBtn = $('.myBtn');
-            const btnClass = $('.btn-class')
-            const mySelect = $('#mySelect');
-            // console.log('data',data);
 
-            //myBtn click
-            btnClass.click(function (e) {
-                e.preventDefault();
-                // 當我按下btn , checkbox 取消選取
-                // $('input[type=checkbox]').prop("checked", false);
-                $('.my-checkbox').prop("checked", false);
-
-                // console.log('myBtn ok');
-                let getdistrict = $(this).attr('data-district');
-                // console.log('data-district', data-district);
+            function showLocationWeatherFUn(getdistrict) {
                 myTbody.html('');
                 tmp = ``;
                 // for
@@ -185,7 +168,7 @@ rps32(移轉編號) -->
                     // console.log('key', key);
                     // console.log('value', value);
 
-                    if (getdistrict == value.district || getdistrict=="全部" ) {
+                    if (getdistrict == value.district || getdistrict == "全部") {
                         tmp += `<tr>
                             <td>${key + 1}</td>
                             <td>${value.district}</td>
@@ -200,12 +183,34 @@ rps32(移轉編號) -->
 
                 });
                 myTbody.append(tmp);
+            }
+
+            //1.bind        
+            const data = testData;
+            const myTbody = $('#myTbody');
+            const myForm = $('#myForm');
+            const myBtn = $('.myBtn');
+            const btnClass = $('.btn-class')
+            const mySelect = $('#mySelect');
+            // console.log('data',data);
+
+            //myBtn click
+            btnClass.click(function (e) {
+                e.preventDefault();
+                // 當我按下btn , checkbox 取消選取
+                // $('input[type=checkbox]').prop("checked", false);
+                $('.my-checkbox').prop("checked", false);
+
+                // console.log('myBtn ok');
+                let getdistrict = $(this).attr('data-district');
+                // console.log('data-district', data-district);
+                showLocationWeatherFUn(getdistrict);
 
             });
 
             //init
             let tmp = ``;
-            let selecttmp=``;
+            let selecttmp = ``;
             $.each(data, function (key, value) {
                 tmp += `<tr>
                 <td>${key + 1}</td>
@@ -215,13 +220,28 @@ rps32(移轉編號) -->
                 <td class="text-end">${Number(value.rps21_amountsunitdollars).toLocaleString()}</td>
             </tr>`;
 
-                selecttmp +=`
-                <option>${value.district}</option>
-                `;
+                // selecttmp += `
+                // <option>${value.district}</option>
+                // `;
+            });
+            myTbody.append(tmp);
+            // mySelect.append(selecttmp);
+
+
+            //select 區域不重覆***bgein***
+            selecttmp = `<option value="全部">全部</option>`; // 加入「全部」
+            let districtSet = new Set();
+
+            $.each(data, function (key, value) {
+                districtSet.add(value.district);
             });
 
-            myTbody.append(tmp);
+            districtSet.forEach(function (district) {
+                selecttmp += `<option value="${district}">${district}</option>`;
+            });
+
             mySelect.append(selecttmp);
+            //select ***end***
 
 
             //form submit
@@ -232,13 +252,13 @@ rps32(移轉編號) -->
                 let districtArr = [];// 我勾選的資料
                 tmp = '';
                 myTbody.html('');
-                let all=0;
+                let all = 0;
                 $.each(formData, function (key, value) {
                     // console.log('value', value);
                     //array push
                     districtArr.push(value.value);
-                    if(value.value=="全部"){
-                        all=1;
+                    if (value.value == "全部") {
+                        all = 1;
                     }
                 });
 
@@ -252,7 +272,7 @@ rps32(移轉編號) -->
                     //console.log('tmpdistrict', tmpdistrict);                 
                     // console.log('index', index);
                     // if (index !== -1) {
-                   if (index !== -1 || all==1 )  {
+                    if (index !== -1 || all == 1) {
                         tmp += `<tr>
                   <td>${key + 1}</td>
                   <td>${value.district}</td>
@@ -266,6 +286,13 @@ rps32(移轉編號) -->
                 myTbody.append(tmp);
 
             });
+
+            mySelect.change(function () {
+
+                let getdistrict = $(this).val();
+                showLocationWeatherFUn(getdistrict);
+            })
+
 
         });
     </script>
